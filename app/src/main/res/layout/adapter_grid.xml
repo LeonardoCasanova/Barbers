@@ -20,4 +20,14 @@
         android:textSize="15sp" >
     </TextView>
 
+    <ProgressBar
+        android:id="@+id/progressImg"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:layout_marginRight="6dp"
+        android:gravity="center|center_vertical"
+        android:visibility="invisible" />
+
 </LinearLayout>

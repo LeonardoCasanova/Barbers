@@ -4,19 +4,17 @@ package br.com.livroandroid.carros.fragments;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.livroandroid.carros.R;
@@ -29,7 +27,8 @@ public class ImagensFragment extends BaseFragment {
 
     private  GridView gridView;
     private List<Barber> barber;
-
+    private CustomGridViewAdapter gridAdapter;
+    protected RecyclerView recyclerView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +63,7 @@ public class ImagensFragment extends BaseFragment {
        }
 
 
+
      protected void onPostExecute(List<Barber>barbers){
 
      }
@@ -78,14 +78,18 @@ public class ImagensFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.grid_layout, container, false);
 
         gridView   = (GridView) view.findViewById(R.id.grid_view);
-        gridView.setAdapter(new CustomGridViewAdapter(getContext(), barbers));
+
+        barber = new ArrayList<>();
+        gridAdapter = new CustomGridViewAdapter(getContext(),R.layout.grid_layout,barber);
+        gridView.setAdapter(gridAdapter);
 
 
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-              Barber b = barber.get(position);
+
+               Barber b = barber.get(position);
 
                 Toast.makeText(getContext(), "Cliente em Espera: " + b.clientes_espera ,Toast.LENGTH_SHORT).show();
 

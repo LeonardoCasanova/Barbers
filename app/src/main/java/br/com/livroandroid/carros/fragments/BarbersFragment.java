@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,10 +23,10 @@ import br.com.livroandroid.carros.domain.BarberService;
 import livroandroid.lib.utils.AndroidUtils;
 
 public class BarbersFragment extends BaseFragment {
-
     protected RecyclerView recyclerView;
+
     private List<Barber> barbers;
-    private LinearLayoutManager mLayoutManager;
+    private GridLayoutManager mLayoutManager;
     private String tipo;
     private SwipeRefreshLayout swipeLayout;
 
@@ -45,18 +46,22 @@ public class BarbersFragment extends BaseFragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
-        // Swipe to Refresh
-        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
-        swipeLayout.setOnRefreshListener(OnRefreshListener());
+
+
+
+     swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
+     swipeLayout.setOnRefreshListener(OnRefreshListener());
+
         swipeLayout.setColorSchemeResources(
                 R.color.refresh_progress_1,
                 R.color.refresh_progress_2,
                 R.color.refresh_progress_3);
+
 
         return view;
     }
@@ -75,6 +80,8 @@ public class BarbersFragment extends BaseFragment {
         };
     }
 
+
+
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -89,20 +96,27 @@ public class BarbersFragment extends BaseFragment {
     private class GetBarbersTask implements TaskListener<List<Barber>> {
         @Override
         public List<Barber> execute() throws Exception {
+
             Thread.sleep(200);
             // Busca os carros em background (Thread)
             return BarberService.getBarbers(getContext());
         }
 
+
         @Override
         public void updateView(List<Barber> barbers) {
+
             if (barbers != null) {
                 BarbersFragment.this.barbers = barbers;
                 // Atualiza a view na UI Thread
                 recyclerView.setAdapter(new CarroAdapter(getContext(), barbers, onClickBarber()));
                 //toast("update ("+carros.size()+"): " + carros);
             }
+
+
         }
+
+
 
         @Override
         public void onError(Exception exception) {
@@ -120,7 +134,6 @@ public class BarbersFragment extends BaseFragment {
                 @Override
                 public void onClickCarro(View view, int idx) {
                     Barber b = barbers.get(idx);
-
 
                    Toast.makeText(getContext(), "Cliente em Espera: " + b.clientes_atendimento,Toast.LENGTH_SHORT).show();
 

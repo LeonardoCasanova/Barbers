@@ -36,11 +36,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
     }
 
 
-    @Override
-    public int getItemCount() {
 
-        return this.barbers != null ? this.barbers.size() : 0;
-    }
 
 
     @Override
@@ -48,7 +44,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         // Infla a view do layout
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_carro, viewGroup, false);
 
-        CardView cardView = (CardView) view.findViewById(R.id.card_view);
+       // CardView cardView = (CardView) view.findViewById(R.id.card_view);
 
         // Cria o ViewHolder
         CarrosViewHolder holder = new CarrosViewHolder(view);
@@ -98,6 +94,12 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         }
     }
 
+    @Override
+    public int getItemCount() {
+
+        return 0;
+    }
+
     public interface CarroOnClickListener {
         public void onClickCarro(View view, int idx);
     }
@@ -113,7 +115,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         public CarrosViewHolder(View view) {
             super(view);
             // Cria as views para salvar no ViewHolder
-            tNome = (TextView) view.findViewById(R.id.text);
+
             img = (ImageView) view.findViewById(R.id.img);
 
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
