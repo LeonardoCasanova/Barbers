@@ -97,7 +97,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
     @Override
     public int getItemCount() {
 
-        return 0;
+        return barbers.size();
     }
 
     public interface CarroOnClickListener {
