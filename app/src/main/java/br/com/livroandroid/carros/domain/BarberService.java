@@ -33,17 +33,25 @@ public class BarberService {
         List<Barber> barbers = new ArrayList<Barber>();
         try {
 
-            JSONArray jsonBarbers =  new JSONArray(json);
-            // Insere cada carro na lista
-            JSONObject jsonBarber;
-            for (int i = 0; i < jsonBarbers.length(); i++) {
 
-                jsonBarber = new JSONObject(jsonBarbers.getString(i));
-                Barber b = new Barber();
+
+
+            JSONObject jsonObject = new JSONObject(json);
+
+            Barber b = new Barber();
+
+            int teste = Integer.parseInt(jsonObject.getString("clientes_atendimento"));
+
+            for (int i = 0; i <teste; i++) {
+
+
+
+
+
                 // Lê as informações de cada carro
-                b.clientes_atendimento = jsonBarber.optString("clientes_atendimento");
-                b.clientes_espera = jsonBarber.optString("clientes_espera");
-                b.UrlFoto = jsonBarber.optString("imagem");
+                b.clientes_atendimento = jsonObject.optString("clientes_atendimento");
+         //       b.clientes_espera = jsonBarber.optString("clientes_espera");
+                b.UrlFoto = jsonObject.optString("imagem");
 
                 if (LOG_ON) {
                     Log.d(TAG, "Carro " + b.clientes_atendimento + " > " + b.UrlFoto);

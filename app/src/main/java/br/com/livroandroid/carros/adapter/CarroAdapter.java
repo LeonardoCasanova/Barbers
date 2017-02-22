@@ -44,7 +44,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         // Infla a view do layout
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_carro, viewGroup, false);
 
-       // CardView cardView = (CardView) view.findViewById(R.id.card_view);
+       //CardView cardView = (CardView) view.findViewById(R.id.card_view);
 
         // Cria o ViewHolder
         CarrosViewHolder holder = new CarrosViewHolder(view);
@@ -59,11 +59,6 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         Barber b = barbers.get(position);
 
 
-        int valor= Integer.parseInt(b.clientes_espera);
-
-        for  (int i = 0; i < valor; i++){
-
-
             Picasso.with(context).load(b.UrlFoto).fit().into(holder.img, new Callback() {
                 @Override
                 public void onSuccess() {
@@ -75,9 +70,9 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
                     holder.progress.setVisibility(View.GONE);
                 }
             });
-        }
 
-        holder.tNome.setText(b.clientes_espera);
+
+//        holder.tNome.setText(b.clientes_espera);
         holder.progress.setVisibility(View.VISIBLE);
 
 
@@ -88,18 +83,21 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    carroOnClickListener.onClickCarro(holder.itemView, position); // A variável position é final
+              carroOnClickListener.onClickCarro(holder.itemView, position); // A variável position é final
                 }
             });
         }
     }
 
+
+
+
     @Override
     public int getItemCount() {
 
         return barbers.size();
-    }
 
+    }
     public interface CarroOnClickListener {
         public void onClickCarro(View view, int idx);
     }
@@ -117,7 +115,6 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             // Cria as views para salvar no ViewHolder
 
             img = (ImageView) view.findViewById(R.id.img);
-
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
         }
     }
