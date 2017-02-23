@@ -133,6 +133,7 @@ public class BarbersFragment extends BaseFragment {
             return new CarroAdapter.CarroOnClickListener() {
                 @Override
                 public void onClickCarro(View view, int idx) {
+
                     Barber b = barbers.get(idx);
 
                    Toast.makeText(getContext(), "Cliente em Espera: " + b.clientes_atendimento,Toast.LENGTH_SHORT).show();

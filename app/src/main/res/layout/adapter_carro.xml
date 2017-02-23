@@ -1,58 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/relative_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="6dp"
     android:clickable="false"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical">
 
-    <LinearLayout
 
-        android:id="@+id/linearLayout"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="1">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="106dp">
 
-        <FrameLayout
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="65dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="49dp"
+            android:adjustViewBounds="false"
+            android:clickable="true" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7.85">
+        <!-- Foto do carro -->
+
+
+        <!-- Barra de progresso enquanto carrega a foto -->
+        <ProgressBar
+            android:id="@+id/progressImg"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginRight="6dp"
+            android:gravity="center|center_vertical"
+            android:visibility="invisible" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!-- Foto do carro -->
+            android:layout_height="148dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="67dp"
+                android:layout_marginStart="67dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:clickable="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="16dp" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <!-- Nome carro -->
 
 
-            <!-- Barra de progresso enquanto carrega a foto -->
-            <ProgressBar
-                android:id="@+id/progressImg"
-                style="@android:style/Widget.ProgressBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_vertical"
-                android:layout_marginRight="6dp"
-                android:gravity="center|center_vertical"
-                android:visibility="invisible" />
-        </FrameLayout>
-
-        <!-- Nome carro -->
-
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="50dp"
-        android:layout_height="49dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="57dp"
-        android:adjustViewBounds="false"
-        android:layout_below="@+id/linearLayout"
-        android:layout_toEndOf="@+id/linearLayout"
-        android:layout_toRightOf="@+id/linearLayout"
-        android:clickable="true"/>
-
-
-</RelativeLayout>
+</LinearLayout>
 
 

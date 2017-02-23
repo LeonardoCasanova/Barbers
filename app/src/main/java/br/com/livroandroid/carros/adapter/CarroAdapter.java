@@ -23,6 +23,7 @@ import livroandroid.lib.utils.MaterialUtils;
 // Herda de RecyclerView.Adapter e declara o tipo genérico <CarroAdapterV2.CarrosViewHolder>
 public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHolder> {
     protected static final String TAG = "livroandroid";
+
     private final List<Barber> barbers;
 
     private final Context context;
@@ -58,6 +59,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
 
         Barber b = barbers.get(position);
 
+        holder.progress.setVisibility(View.VISIBLE);
 
             Picasso.with(context).load(b.UrlFoto).fit().into(holder.img, new Callback() {
                 @Override
@@ -72,21 +74,47 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             });
 
 
-//        holder.tNome.setText(b.clientes_espera);
-        holder.progress.setVisibility(View.VISIBLE);
+        //Imagem II
+
+        Picasso.with(context).load(b.UrlFoto).fit().into(holder.img2, new Callback() {
+            @Override
+            public void onSuccess() {
+                holder.progress.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+                holder.progress.setVisibility(View.GONE);
+            }
+        });
+//
+//     holder.tNome.setText(b.clientes_espera);
+
 
 
 
 
                // Click
         if (carroOnClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-              carroOnClickListener.onClickCarro(holder.itemView, position); // A variável position é final
+              carroOnClickListener.onClickCarro(holder.img, position); // A variável position é final
                 }
             });
         }
+
+
+
+        if (carroOnClickListener != null) {
+            holder.img2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    carroOnClickListener.onClickCarro(holder.img2, position); // A variável position é final
+                }
+            });
+        }
+
     }
 
 
@@ -109,12 +137,12 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         ImageView img2;
         ProgressBar progress;
 
-
         public CarrosViewHolder(View view) {
             super(view);
             // Cria as views para salvar no ViewHolder
 
             img = (ImageView) view.findViewById(R.id.img);
+            img2 = (ImageView) view.findViewById(R.id.img2);
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
         }
     }

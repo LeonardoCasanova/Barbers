@@ -21,6 +21,7 @@ public class BarberService {
     private static final String URL = "http://casanovadigital.96.lt/api/barber.php";
     private static final boolean LOG_ON = false;
     private static final String TAG = "BarberService";
+
     public static List<Barber> getBarbers(Context context) throws IOException {
         String url = URL;
         String json = HttpHelper.doGet(url);
@@ -35,7 +36,6 @@ public class BarberService {
 
 
 
-
             JSONObject jsonObject = new JSONObject(json);
 
             Barber b = new Barber();
@@ -43,10 +43,6 @@ public class BarberService {
             int teste = Integer.parseInt(jsonObject.getString("clientes_atendimento"));
 
             for (int i = 0; i <teste; i++) {
-
-
-
-
 
                 // Lê as informações de cada carro
                 b.clientes_atendimento = jsonObject.optString("clientes_atendimento");
