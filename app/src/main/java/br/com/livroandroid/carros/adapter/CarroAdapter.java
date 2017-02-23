@@ -22,9 +22,11 @@ import livroandroid.lib.utils.MaterialUtils;
 
 // Herda de RecyclerView.Adapter e declara o tipo genérico <CarroAdapterV2.CarrosViewHolder>
 public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHolder> {
+
     protected static final String TAG = "livroandroid";
 
     private final List<Barber> barbers;
+
 
     private final Context context;
 
@@ -76,17 +78,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
 
         //Imagem II
 
-        Picasso.with(context).load(b.UrlFoto).fit().into(holder.img2, new Callback() {
-            @Override
-            public void onSuccess() {
-                holder.progress.setVisibility(View.GONE);
-            }
 
-            @Override
-            public void onError() {
-                holder.progress.setVisibility(View.GONE);
-            }
-        });
 //
 //     holder.tNome.setText(b.clientes_espera);
 
@@ -105,7 +97,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         }
 
 
-
+/*
         if (carroOnClickListener != null) {
             holder.img2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +107,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             });
         }
 
+        */
     }
 
 
@@ -134,7 +127,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
     public static class CarrosViewHolder extends RecyclerView.ViewHolder {
         public TextView tNome;
         ImageView img;
-        ImageView img2;
+  //      ImageView img2;
         ProgressBar progress;
 
         public CarrosViewHolder(View view) {
@@ -142,7 +135,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             // Cria as views para salvar no ViewHolder
 
             img = (ImageView) view.findViewById(R.id.img);
-            img2 = (ImageView) view.findViewById(R.id.img2);
+       //     img2 = (ImageView) view.findViewById(R.id.img2);
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
         }
     }

@@ -26,6 +26,7 @@ public class BarbersFragment extends BaseFragment {
     protected RecyclerView recyclerView;
 
     private List<Barber> barbers;
+    private List<Barber> espera;
     private GridLayoutManager mLayoutManager;
     private String tipo;
     private SwipeRefreshLayout swipeLayout;
@@ -46,7 +47,7 @@ public class BarbersFragment extends BaseFragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mLayoutManager = new GridLayoutManager(getActivity(),2);
+        mLayoutManager = new GridLayoutManager(getActivity(),6);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);

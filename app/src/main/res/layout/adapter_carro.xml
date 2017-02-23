@@ -12,11 +12,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="188dp"
+        android:layout_height="114dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="106dp">
+        android:layout_marginBottom="106dp"
+        android:layout_weight="20.81">
 
         <ImageView
             android:id="@+id/img"
@@ -24,10 +25,9 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="65dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="42dp"
             android:adjustViewBounds="false"
             android:clickable="true" />
 
